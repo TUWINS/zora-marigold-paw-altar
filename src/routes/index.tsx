@@ -115,6 +115,11 @@ function Index() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
         <Petals />
+        <div className="pop relative mb-2 w-44 rounded-full border-4 border-marigold glow">
+          <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-square w-full rounded-full object-cover object-top" />
+          <div className="absolute -right-2 -top-2"><Marigold size={40} /></div>
+          <div className="absolute -left-2 -top-3"><Marigold size={34} /></div>
+        </div>
         <p className="font-hand text-3xl text-marigold">Para entrar al altar…</p>
         <button onClick={() => setOpen(true)} aria-label="Apretar la naricita"
           className="pop animate-boop rounded-full p-4 focus:outline-none">
