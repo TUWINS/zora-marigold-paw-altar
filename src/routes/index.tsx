@@ -182,7 +182,6 @@ function Index() {
       <Petals />
       <PapelPicado />
       <section className="animate-in fade-in duration-1000 px-6 pt-10 text-center">
-        <p className="font-hand text-2xl text-rosa">✦ Altar de Día de Muertos · 1 y 2 de noviembre ✦</p>
         <p className="font-hand text-3xl text-marigold">Siempre en nuestro corazón</p>
         <h1 className="pop inline-block font-display text-7xl font-bold text-primary text-glow sm:text-9xl">Zora</h1>
         <p className="mx-auto mt-2 max-w-md text-muted-foreground">Nuestra gatita, la de los ronroneos y las siestas al sol. Esta noche el camino de flores te trae a casa.</p>
