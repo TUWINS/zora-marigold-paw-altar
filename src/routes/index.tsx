@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import zora from "@/assets/zora.jpg";
+import zoraFoto from "@/assets/zora-foto.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -86,7 +86,7 @@ function Arch() {
         </div>
       ))}
       <div className="pop absolute left-1/2 top-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-t-full border-4 border-marigold glow">
-        <img src={zora} alt="Zora, mi gatita" className="aspect-[3/4] w-full object-cover" />
+        <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-[3/4] w-full object-cover" />
       </div>
     </div>
   );
@@ -101,7 +101,7 @@ function Veladora({ i }: { i: number }) {
       </div>
       <div className="relative flex h-32 w-24 items-center justify-center rounded-b-xl rounded-t-md bg-wax shadow-lg">
         <div className="absolute inset-x-0 top-0 h-3 rounded-t-md bg-rosa" />
-        <img src={zora} alt="" className="h-16 w-16 rounded-full border-2 border-marigold object-cover" />
+        <img src={zoraFoto.url} alt="" className="h-16 w-16 rounded-full border-2 border-marigold object-cover" />
         <div className="absolute inset-x-0 bottom-0 h-3 rounded-b-xl bg-secondary" />
       </div>
     </div>
