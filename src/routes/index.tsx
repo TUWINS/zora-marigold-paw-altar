@@ -32,14 +32,30 @@ function Marigold({ size = 48, className = "" }: { size?: number; className?: st
 
 function Petals() {
   const petals = useMemo(
-    () => Array.from({ length: 28 }, (_, i) => ({
-      left: (i * 37) % 100, delay: (i * 0.7) % 12, dur: 9 + (i % 6) * 1.5, size: 10 + (i % 4) * 5, drift: ((i % 5) - 2) * 40,
+    () => Array.from({ length: 36 }, (_, i) => ({
+      left: (i * 37) % 100, delay: (i * 0.7) % 12, dur: 9 + (i % 6) * 1.5, size: 9 + (i % 5) * 4, drift: ((i % 5) - 2) * 40,
+      color: i % 7 === 3 ? "bg-rosa" : i % 5 === 2 ? "bg-marigold-deep" : "bg-marigold",
     })), []);
   return (
     <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden">
       {petals.map((p, i) => (
-        <span key={i} className="animate-fall absolute top-0 rounded-[60%_0_60%_0] bg-marigold"
+        <span key={i} className={`animate-fall absolute top-0 rounded-[60%_0_60%_0] ${p.color}`}
           style={{ left: `${p.left}%`, width: p.size, height: p.size, animationDelay: `${p.delay}s`, animationDuration: `${p.dur}s`, ["--drift" as string]: `${p.drift}px` }} />
+      ))}
+    </div>
+  );
+}
+
+function Stars() {
+  const stars = useMemo(
+    () => Array.from({ length: 24 }, (_, i) => ({
+      left: (i * 43) % 100, top: (i * 29) % 92, delay: (i * 0.53) % 3, size: 3 + (i % 3) * 2,
+    })), []);
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {stars.map((s, i) => (
+        <span key={i} className="animate-twinkle absolute rounded-full bg-marigold"
+          style={{ left: `${s.left}%`, top: `${s.top}%`, width: s.size, height: s.size, animationDelay: `${s.delay}s` }} />
       ))}
     </div>
   );
@@ -86,7 +102,8 @@ function Arch() {
         </div>
       ))}
       <div className="pop absolute left-1/2 top-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-t-full border-4 border-marigold glow">
-        <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-[3/4] w-full object-cover" />
+        <div className="pointer-events-none absolute inset-0 z-10 rounded-t-full border-2 border-wax/70" />
+        <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-[3/4] w-full object-cover object-[50%_15%]" />
       </div>
     </div>
   );
@@ -113,12 +130,16 @@ function Index() {
 
   if (!open) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
+      <main className="relative flex min-h-screen flex-col items-center justify-center gap-8 overflow-hidden px-6 text-center">
+        <Stars />
         <Petals />
-        <div className="pop relative mb-2 w-44 rounded-full border-4 border-marigold glow">
-          <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-square w-full rounded-full object-cover object-top" />
-          <div className="absolute -right-2 -top-2"><Marigold size={40} /></div>
-          <div className="absolute -left-2 -top-3"><Marigold size={34} /></div>
+        <div className="absolute inset-x-0 top-0"><PapelPicado /></div>
+        <div className="pop relative mb-2 w-52 rounded-full border-4 border-marigold glow">
+          <img src={zoraFoto.url} alt="Zora, mi gatita" className="aspect-square w-full rounded-full object-cover object-[50%_12%]" />
+          <div className="absolute -right-3 -top-2"><Marigold size={44} /></div>
+          <div className="absolute -left-3 -top-3"><Marigold size={36} /></div>
+          <div className="absolute -bottom-1 -left-4"><Marigold size={30} /></div>
+          <div className="absolute -bottom-2 -right-4"><Marigold size={34} /></div>
         </div>
         <p className="font-hand text-3xl text-marigold">Para entrar al altar…</p>
         <button onClick={() => setOpen(true)} aria-label="Apretar la naricita"
