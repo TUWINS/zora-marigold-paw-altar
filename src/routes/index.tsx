@@ -30,6 +30,26 @@ function Marigold({ size = 48, className = "" }: { size?: number; className?: st
   );
 }
 
+function SugarSkull({ size = 64, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" className={className}>
+      <path d="M13 20 L8 4 L26 13 Z" className="fill-rosa" />
+      <path d="M51 20 L56 4 L38 13 Z" className="fill-rosa" />
+      <path d="M32 5 C49 5 56 16 56 30 C56 46 46 58 32 58 C18 58 8 46 8 30 C8 16 15 5 32 5Z" className="fill-wax" />
+      <circle cx="23" cy="28" r="8" className="fill-marigold-deep" />
+      <circle cx="23" cy="28" r="4.5" className="fill-wax" />
+      <circle cx="41" cy="28" r="8" className="fill-marigold-deep" />
+      <circle cx="41" cy="28" r="4.5" className="fill-wax" />
+      <path d="M32 40 C30 38 27 38.5 27 41 C27 43 30 45 32 46 C34 45 37 43 37 41 C37 38.5 34 38 32 40Z" className="fill-accent" />
+      <circle cx="18" cy="44" r="1.6" className="fill-marigold-deep" />
+      <circle cx="46" cy="44" r="1.6" className="fill-marigold-deep" />
+      <path d="M26 50 h12 M28 50 v6 M32.6 50 v6 M37.2 50 v6" className="stroke-marigold-deep" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      <circle cx="32" cy="14" r="4" className="fill-rosa" />
+      <circle cx="32" cy="14" r="1.6" className="fill-wax" />
+    </svg>
+  );
+}
+
 function Petals() {
   const petals = useMemo(
     () => Array.from({ length: 36 }, (_, i) => ({
@@ -162,6 +182,7 @@ function Index() {
       <Petals />
       <PapelPicado />
       <section className="animate-in fade-in duration-1000 px-6 pt-10 text-center">
+        <p className="font-hand text-2xl text-rosa">✦ Altar de Día de Muertos · 1 y 2 de noviembre ✦</p>
         <p className="font-hand text-3xl text-marigold">Siempre en nuestro corazón</p>
         <h1 className="pop inline-block font-display text-7xl font-bold text-primary text-glow sm:text-9xl">Zora</h1>
         <p className="mx-auto mt-2 max-w-md text-muted-foreground">Nuestra gatita, la de los ronroneos y las siestas al sol. Esta noche el camino de flores te trae a casa.</p>
@@ -174,13 +195,33 @@ function Index() {
         <div className="mx-auto h-3 w-[94%] rounded-b-2xl bg-marigold-deep/80" />
         <div className="mx-auto h-2 w-[80%] rounded-b-xl bg-secondary/60" />
       </section>
-      <section className="mx-auto mt-16 grid max-w-3xl gap-6 px-6 sm:grid-cols-3">
-        {[["🐟", "Su pescadito favorito"], ["🧶", "Su bolita de estambre"], ["🥛", "Un platito de leche"]].map(([e, t]) => (
-          <div key={t} className="pop rounded-lg border-2 border-marigold/50 bg-card p-6 text-center">
-            <div className="text-5xl">{e}</div>
-            <p className="mt-3 font-hand text-2xl text-marigold">{t}</p>
-          </div>
-        ))}
+      <section className="mx-auto mt-16 max-w-4xl px-6 text-center">
+        <p className="font-display text-3xl font-bold text-marigold text-glow">La Ofrenda</p>
+        <p className="mt-1 font-hand text-2xl text-muted-foreground">Lo que Zora más quería, para que no le falte en el camino</p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          {[["🍞", "Pan de muerto"], ["💧", "Agua fresquita"], ["🧂", "Salita del camino"], ["🐟", "Su pescadito favorito"], ["🧶", "Su bolita de estambre"], ["🥛", "Un platito de leche"]].map(([e, t]) => (
+            <div key={t} className="pop rounded-lg border-2 border-marigold/50 bg-card p-6 text-center">
+              <div className="text-5xl">{e}</div>
+              <p className="mt-3 font-hand text-2xl text-marigold">{t}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="mx-auto mt-14 max-w-xl px-6 text-center">
+        <div className="pop rounded-3xl border-2 border-rosa/60 bg-card p-8 glow-soft">
+          <SugarSkull size={76} className="mx-auto" />
+          <p className="mt-4 font-display text-2xl font-bold text-rosa">Calaverita de Zora</p>
+          <p className="mt-4 font-hand text-2xl leading-relaxed">
+            "Vinimos a visitarla<br />
+            con pan, con sal y con flor;<br />
+            Zora ronronea en su altar<br />
+            y nos regala su amor."<br /><br />
+            No llores, que en cada vela<br />
+            su lucecita está ardiendo:<br />
+            los que se van no se marchan,<br />
+            viven mientras los seguimos queriendo.
+          </p>
+        </div>
       </section>
       <div className="mt-14 flex items-center justify-center gap-3 px-6">
         {Array.from({ length: 9 }).map((_, i) => <Marigold key={i} size={i === 4 ? 46 : 30} className={i % 2 ? "opacity-80" : ""} />)}
